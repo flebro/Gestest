@@ -16,7 +16,10 @@ public class AdministrateurDao extends AbstractIdDao<Administrateur> implements 
 				" WHERE login = :login" +
 				" AND motDePasse = :motDePasse";
 		try {
-			return getEntityManager().createQuery(queryRqt, Administrateur.class).getSingleResult();
+			return getEntityManager().createQuery(queryRqt, Administrateur.class)
+					.setParameter("login", login)
+					.setParameter("motDePasse", motDePasse)
+					.getSingleResult();
 		} catch (NoResultException e) {
 			return null;
 		}

@@ -20,4 +20,29 @@ public class Proposition {
 	@ManyToOne
 	@JoinColumn(name="question_id")
 	private Question question;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public String getIntitule() {
+		return intitule;
+	}
+
+	public void setIntitule(String intitule) {
+		this.intitule = intitule;
+	}
+
+	public Question getQuestion() {
+		return question;
+	}
+
+	public void setQuestion(Question question) {
+		this.question = question;
+	}
+	
 }

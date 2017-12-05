@@ -22,5 +22,21 @@ public class Test {
 	@ManyToMany
 	@JoinTable(name="test_questionnaire", joinColumns=@JoinColumn(name="test_id"), inverseJoinColumns=@JoinColumn(name="questionnaire_id"))
 	List<Questionnaire> questionnaires;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public List<Questionnaire> getQuestionnaires() {
+		return questionnaires;
+	}
+
+	public void setQuestionnaires(List<Questionnaire> questionnaires) {
+		this.questionnaires = questionnaires;
+	}
 	
 }

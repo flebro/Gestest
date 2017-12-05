@@ -26,5 +26,29 @@ public class Questionnaire {
 	
 	@OneToMany(mappedBy="questionnaire", fetch=FetchType.LAZY)
 	private List<Question> questions;
+
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	public List<Test> getTests() {
+		return tests;
+	}
+
+	public void setTests(List<Test> tests) {
+		this.tests = tests;
+	}
+
+	public List<Question> getQuestions() {
+		return questions;
+	}
+
+	public void setQuestions(List<Question> questions) {
+		this.questions = questions;
+	}
 	
 }
