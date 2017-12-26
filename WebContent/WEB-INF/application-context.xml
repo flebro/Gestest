@@ -7,7 +7,7 @@
 		http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd">
 
 	<context:annotation-config />
-	<context:component-scan base-package="fr.tetris.*" />
+	<context:component-scan base-package="com.master.*" />
 
 	<!-- On crée le DataSource -->
 	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource">

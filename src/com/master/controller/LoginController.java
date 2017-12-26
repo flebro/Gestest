@@ -9,9 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import com.master.dao.IAdministrateurDao;
 import com.master.dao.ICandidatDao;
-import com.master.model.Administrateur;
 import com.master.model.Candidat;
 
 @Controller
@@ -19,8 +17,6 @@ public class LoginController {
 	
 	@Autowired
 	private ICandidatDao candidatDao;
-	@Autowired
-	private IAdministrateurDao adminDao;
 	
 	@RequestMapping(value = "login", method = RequestMethod.GET)
 	public String get() {
@@ -32,18 +28,7 @@ public class LoginController {
 		Candidat candidat = candidatDao.findByCle(cle);
 		if (candidat != null) {
 			session.setAttribute("user", candidat);
-			return "home";
-		} else {
-			return "redirect:/login";
-		}
-	}
-	
-	@RequestMapping(value = "loginAdmin", method = RequestMethod.POST)
-	public String loginAdmin(@RequestParam String login, @RequestParam String motDePasse, HttpSession session, Model model) {
-		Administrateur admin = adminDao.findByLoginMotDePasse(login, motDePasse);
-		if (admin != null) {
-			session.setAttribute("user", admin);
-			return "home";
+			return "tests";
 		} else {
 			return "redirect:/login";
 		}

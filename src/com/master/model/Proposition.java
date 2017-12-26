@@ -17,6 +17,8 @@ public class Proposition {
 	
 	private String intitule;
 	
+	private boolean bonneReponse;
+	
 	@ManyToOne
 	@JoinColumn(name="question_id")
 	private Question question;
@@ -35,6 +37,14 @@ public class Proposition {
 
 	public void setIntitule(String intitule) {
 		this.intitule = intitule;
+	}
+
+	public boolean isBonneReponse() {
+		return bonneReponse;
+	}
+
+	public void setBonneReponse(boolean bonneReponse) {
+		this.bonneReponse = bonneReponse;
 	}
 
 	public Question getQuestion() {

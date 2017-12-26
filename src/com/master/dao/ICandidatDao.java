@@ -6,4 +6,6 @@ public interface ICandidatDao extends IDao<Candidat> {
 
 	Candidat findByCle(String cle);
 	
+	Candidat getWithTests(Long id);
+	
 }

@@ -44,4 +44,8 @@ public abstract class Personne {
 		this.prenom = prenom;
 	}
 	
+	public boolean isAdmin() {
+		return this instanceof Administrateur;
+	}
+	
 }

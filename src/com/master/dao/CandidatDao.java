@@ -22,4 +22,17 @@ public class CandidatDao extends AbstractIdDao<Candidat> implements ICandidatDao
 		}
 	}
 
+	@Override
+	public Candidat getWithTests(Long id) {
+		String queryString = "SELECT candidat FROM Candidat candidat LEFT JOIN FETCH candidat.tests WHERE candidat.id = :candidatId";
+
+		try {
+			return getEntityManager().createQuery(queryString, Candidat.class)
+					.setParameter("candidatId", id)
+					.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
+
 }

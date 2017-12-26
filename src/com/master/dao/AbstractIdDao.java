@@ -7,6 +7,8 @@ import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.criteria.CriteriaQuery;
 
+import org.springframework.transaction.annotation.Transactional;
+
 public abstract class AbstractIdDao<T> implements IDao<T> {
 
 	@PersistenceContext
@@ -29,12 +31,12 @@ public abstract class AbstractIdDao<T> implements IDao<T> {
 		return em.createQuery(criteria).getResultList();
 	}
 	
-	@Override
+	@Override @Transactional
 	public T save(T model) {
 		return em.merge(model);
 	}
 	
-	@Override
+	@Override @Transactional
 	public void delete(T model) {
 		em.remove(model);
 	}

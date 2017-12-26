@@ -20,6 +20,8 @@ public class Questionnaire {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Long id;
 	
+	private String nom;
+	
 	@ManyToMany
 	@JoinTable(name="test_questionnaire", joinColumns=@JoinColumn(name="questionnaire_id"), inverseJoinColumns=@JoinColumn(name="test_id"))
 	private List<Test> tests;
@@ -33,6 +35,14 @@ public class Questionnaire {
 
 	public void setId(Long id) {
 		this.id = id;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
 	}
 
 	public List<Test> getTests() {
