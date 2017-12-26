@@ -51,17 +51,14 @@ public class PropositionController {
 		if (question == null) {
 			return "redirect:/questionnaires/";
 		} else {
-			Proposition propositionOriginale = questionId != null ? propositionDao.get(questionId) : null;
-			if (propositionOriginale != null && !propositionOriginale.getQuestion().getId().equals(questionnaireId) ) {
+			Proposition propositionOriginale = propositionId != null ? propositionDao.get(propositionId) : null;
+			if (propositionOriginale != null && !propositionOriginale.getQuestion().getId().equals(questionId) ) {
 				return "redirect:/questionnaire/" + questionnaireId;
 			}
 		}
 		// Mise à jour
-		proposition.setId(questionId);
+		proposition.setId(propositionId);
 		proposition.setQuestion(question);
-		if (question.getPropositions().size() == 0) {
-			proposition.setBonneReponse(true);
-		}
 		propositionDao.save(proposition);
 		return "redirect:/questionnaire/" + questionnaireId;
 	}
@@ -74,7 +71,7 @@ public class PropositionController {
 			return "redirect:/questionnaires/";
 		} else {
 			Question question = questionDao.get(questionId);
-			Proposition proposition = propositionDao.get(questionId);
+			Proposition proposition = propositionDao.get(propositionId);
 			if (question != null && proposition != null && question.getQuestionnaire().getId().equals(questionnaireId) && proposition.getQuestion().getId().equals(questionId) ) {
 				propositionDao.delete(proposition);
 			}

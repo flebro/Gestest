@@ -38,7 +38,27 @@
 						<ul class="collection">
 							<c:forEach items="${question.propositions }" var="proposition">
 								<li class="collection-item">
-									<div>${proposition.intitule}</div>
+									<div>
+										<c:choose>
+											<c:when test="${proposition.bonneReponse }"><i class="material-icons">check_box</i></c:when>
+											<c:otherwise><i class="material-icons">check_box_outline_blank</i></c:otherwise>
+										</c:choose>
+										 ${proposition.intitule} <a
+											href="#!" title="Supprimer" class="secondary-content"
+											onclick="$.ajax({
+											    type: 'DELETE',
+											    url: 'http://localhost:8080/Gestest/questionnaire/${questionnaire.id}/question/${question.id}/proposition/${proposition.id }',
+											    complete:
+										            function () {
+										                    window.location = 'http://localhost:8080/Gestest/questionnaire/${questionnaire.id}';                
+										            }
+											});">
+											<i class="material-icons">delete</i>
+										</a> <a class="secondary-content"
+											href="/Gestest/questionnaire/${questionnaire.id}/question/${question.id}/proposition/${proposition.id }"
+											title="Editer"> <i class="material-icons">edit</i>
+										</a>
+									</div>
 								</li>
 							</c:forEach>
 						</ul>
