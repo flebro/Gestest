@@ -3,7 +3,7 @@
 <ul id="nav-mobile" class="right hide-on-med-and-down">
 	<c:choose>
 		<c:when test="${user != null }">
-			<c:if test="${user.isAdmin()}">
+			<c:if test="${user.admin}">
 				<li><a class='waves-effect waves-light dropdown-button btn'
 					href='#' data-activates='dropdownAdmin'>Administration</a></li>
 			</c:if>
@@ -19,7 +19,7 @@
 </ul>
 
 <ul id='dropdownAdmin' class='dropdown-content'>
-	<li><a href="/Gestest/candidats">Candidats</a></li>
-	<li><a href="/Gestest/tests">Tests</a></li>
-	<li><a href="/Gestest/questionnaires">Questionnaires</a></li>
+	<li><a href="/Gestest/admin/candidats">Candidats</a></li>
+	<li><a href="/Gestest/admin/tests">Tests</a></li>
+	<li><a href="/Gestest/admin/questionnaires">Questionnaires</a></li>
 </ul>

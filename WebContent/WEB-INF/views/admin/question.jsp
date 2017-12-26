@@ -3,7 +3,7 @@
 
 <div class="container">
 	<div class="row">
-		<form:form class="col s12" action="/Gestest/questionnaire/${questionnaireId }/question/${question.id }" method="post"
+		<form:form class="col s12" action="/Gestest/admin/questionnaire/${questionnaireId }/question/${question.id }" method="post"
 			modelAttribute="question">
 			<div class="row">
 				<div class="input-field">

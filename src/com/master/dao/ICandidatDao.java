@@ -8,4 +8,6 @@ public interface ICandidatDao extends IDao<Candidat> {
 	
 	Candidat getWithTests(Long id);
 	
+	boolean cleDisponible(String cleATester);
+	
 }

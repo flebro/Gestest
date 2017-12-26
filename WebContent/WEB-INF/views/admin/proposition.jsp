@@ -15,7 +15,7 @@
 <div class="container">
 	<div class="row">
 		<form:form class="col s12"
-			action="/Gestest/questionnaire/${questionnaireId }/question/${questionId }/proposition/${proposition.id }"
+			action="/Gestest/admin/questionnaire/${questionnaireId }/question/${questionId }/proposition/${proposition.id }"
 			method="post" modelAttribute="proposition">
 			<div class="row">
 				<div class="input-field">

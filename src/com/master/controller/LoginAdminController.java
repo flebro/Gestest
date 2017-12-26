@@ -28,7 +28,7 @@ public class LoginAdminController {
 		Administrateur admin = adminDao.findByLoginMotDePasse(login, motDePasse);
 		if (admin != null) {
 			session.setAttribute("user", admin);
-			return "redirect:/tests";
+			return "redirect:/admin/tests";
 		} else {
 			return "redirect:/loginAdmin";
 		}

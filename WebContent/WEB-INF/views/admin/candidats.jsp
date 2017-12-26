@@ -4,14 +4,8 @@
 <div class="container">
 	<div class="row">
 		<h4 class="header">Nouveau Candidat</h4>
-		<form:form class="col s12" action="candidat" method="post"
+		<form:form class="col s12" action="admin/candidat" method="post"
 			modelAttribute="newCandidat">
-			<div class="row">
-				<div class="input-field">
-					<form:input id="cle" path="cle" type="text" class="validate" />
-					<form:label path="cle">Cle</form:label>
-				</div>
-			</div>
 			<div class="row">
 				<div class="input-field">
 					<form:input id="nom" path="nom" type="text" class="validate" />
@@ -33,9 +27,9 @@
 	<div class="row">
 		<ul class="collection">
 			<c:forEach items="${candidats}" var="candidat">
-				<li class="collection-item avatar"><span class="title">${candidat.cle }</span></li>
 				<p>Nom : ${candidat.nom }</p>
 				<p>Prenom : ${candidat.prenom }</p>
+				<p>Clé : ${candidat.cle }</p>
 			</c:forEach>
 		</ul>
 	</div>

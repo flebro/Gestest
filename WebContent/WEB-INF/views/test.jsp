@@ -1,52 +1,12 @@
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
 
-<script>
-	$(document).ready(function() {
-		$('#questionnaireAjoutId').material_select();
-	});
-</script>
-
-<div class="container">
-	<div class="row">
-		<h4 class="header">${test.nom}</h4>
-	</div>
-
-	<div class="row">
-		<h5>Associer un questionnaire</h5>
-
-		<form class="col s12" action="/Gestest/test/${test.id}/questionnaire"
-			method="post">
-
-			<select id="questionnaireAjoutId" name="questionnaireAjoutId">
-				<c:forEach items="${questionnairesDisponibles }" var="questDispo">
-					<option value="${questDispo.id }">${questDispo.nom }</option>
-				</c:forEach>
-			</select>
-			<button type="submit" class="btn btn-primary right">Ajouter</button>
-		</form>
-	</div>
-
-	<div class="row">
-		<h5>Questionnaires associés</h5>
-
-		<ul class="collection">
-			<c:forEach items="${test.questionnaires }" var="questionnaire">
-				<li class="collection-item">
-					<div>${questionnaire.nom}<a href="#!" title="Désassocier"
-							class="secondary-content"
-							onclick="$.ajax({
-						    type: 'DELETE',
-						    url: 'http://localhost:8080/Gestest/test/${test.id}/questionnaire/${questionnaire.id}',
-						    complete:
-					            function () {
-					                    window.location = 'http://localhost:8080/Gestest/test/${test.id}';                
-					            }
-						});">
-							<i class="material-icons">close</i>
-						</a>
-					</div>
-				</li>
-			</c:forEach>
-		</ul>
-	</div>
-</div>
+</body>
+</html>

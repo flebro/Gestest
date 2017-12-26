@@ -1,4 +1,4 @@
-package com.master.controller;
+package com.master.controller.admin;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -16,7 +16,7 @@ import com.master.model.Question;
 import com.master.model.Questionnaire;
 
 @Controller
-public class PropositionController {
+public class PropositionAdminController {
 
 	@Autowired
 	private IPropositionDao propositionDao;
@@ -26,14 +26,14 @@ public class PropositionController {
 	private IQuestionnaireDao questionnaireDao;
 
 	
-	@RequestMapping(value = {"questionnaire/{questionnaireId}/question/{questionId}/proposition/{propositionId}","questionnaire/{questionnaireId}/question/{questionId}/proposition"}, method = RequestMethod.GET)
+	@RequestMapping(value = {"admin/questionnaire/{questionnaireId}/question/{questionId}/proposition/{propositionId}","admin/questionnaire/{questionnaireId}/question/{questionId}/proposition"}, method = RequestMethod.GET)
 	public String get(@PathVariable(name="questionnaireId", required=true) Long questionnaireId, @PathVariable(name="questionId", required=true) Long questionId, @PathVariable(name="propositionId", required=false) Long propositionId, Model model) {
 		Proposition proposition = null;
 		if (propositionId != null) {
 			proposition = propositionDao.get(propositionId);
 			// Controle de cohérence
 			if (proposition == null || !proposition.getQuestion().getId().equals(questionId)) {
-				return "redirect:/questionnaire/" + questionnaireId;
+				return "redirect:/admin/questionnaire/" + questionnaireId;
 			}
 		} else {
 			proposition = new Proposition();
@@ -44,38 +44,38 @@ public class PropositionController {
 		return "proposition";
 	}
 	
-	@RequestMapping(value = {"questionnaire/{questionnaireId}/question/{questionId}/proposition/{propositionId}","questionnaire/{questionnaireId}/question/{questionId}/proposition"}, method = RequestMethod.POST)
+	@RequestMapping(value = {"admin/questionnaire/{questionnaireId}/question/{questionId}/proposition/{propositionId}","admin/questionnaire/{questionnaireId}/question/{questionId}/proposition"}, method = RequestMethod.POST)
 	public String save(@PathVariable(name="questionnaireId", required=true) Long questionnaireId, @PathVariable(name="questionId", required=true) Long questionId, @PathVariable(name="propositionId", required=false) Long propositionId, @ModelAttribute("proposition") Proposition proposition) {
 		Question question = questionDao.get(questionId);
 		// Contrôle de cohérence
 		if (question == null) {
-			return "redirect:/questionnaires/";
+			return "redirect:/admin/questionnaires/";
 		} else {
 			Proposition propositionOriginale = propositionId != null ? propositionDao.get(propositionId) : null;
 			if (propositionOriginale != null && !propositionOriginale.getQuestion().getId().equals(questionId) ) {
-				return "redirect:/questionnaire/" + questionnaireId;
+				return "redirect:/admin/questionnaire/" + questionnaireId;
 			}
 		}
 		// Mise à jour
 		proposition.setId(propositionId);
 		proposition.setQuestion(question);
 		propositionDao.save(proposition);
-		return "redirect:/questionnaire/" + questionnaireId;
+		return "redirect:/admin/questionnaire/" + questionnaireId;
 	}
 	
-	@RequestMapping(value = "questionnaire/{questionnaireId}/question/{questionId}/proposition/{propositionId}", method = RequestMethod.DELETE)
+	@RequestMapping(value = "admin/questionnaire/{questionnaireId}/question/{questionId}/proposition/{propositionId}", method = RequestMethod.DELETE)
 	public String delete(@PathVariable(name="questionnaireId", required=true) Long questionnaireId, @PathVariable(name="questionId", required=true) Long questionId, @PathVariable(name="propositionId", required=true) Long propositionId) {
 		Questionnaire questionnaire = questionnaireDao.get(questionnaireId);
 		// Contrôle de cohérence
 		if (questionnaire == null) {
-			return "redirect:/questionnaires/";
+			return "redirect:/admin/questionnaires/";
 		} else {
 			Question question = questionDao.get(questionId);
 			Proposition proposition = propositionDao.get(propositionId);
 			if (question != null && proposition != null && question.getQuestionnaire().getId().equals(questionnaireId) && proposition.getQuestion().getId().equals(questionId) ) {
 				propositionDao.delete(proposition);
 			}
-			return "redirect:/questionnaire/" + questionnaireId;
+			return "redirect:/admin/questionnaire/" + questionnaireId;
 		}
 	}
 	

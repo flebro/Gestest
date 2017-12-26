@@ -26,49 +26,49 @@
 	<definition name="tests" extends="template">
 		<put-attribute name="pageTitle" value="Liste des tests" />
 		<put-attribute name="navContent" value="/WEB-INF/views/header.jsp" />
-		<put-attribute name="content" value="/WEB-INF/views/tests.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/admin/tests.jsp" />
 	</definition>
 	
 	<definition name="test" extends="template">
 		<put-attribute name="pageTitle" value="Test" />
 		<put-attribute name="navContent" value="/WEB-INF/views/header.jsp" />
-		<put-attribute name="content" value="/WEB-INF/views/test.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/admin/test.jsp" />
 	</definition>
 
 	<definition name="candidats" extends="template">
 		<put-attribute name="pageTitle" value="Liste des candidats" />
 		<put-attribute name="navContent" value="/WEB-INF/views/header.jsp" />
-		<put-attribute name="content" value="/WEB-INF/views/candidats.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/admin/candidats.jsp" />
 	</definition>
 	
 	<definition name="candidat" extends="template">
 		<put-attribute name="pageTitle" value="Candidat" />
 		<put-attribute name="navContent" value="/WEB-INF/views/header.jsp" />
-		<put-attribute name="content" value="/WEB-INF/views/candidat.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/admin/candidat.jsp" />
 	</definition>
 	
 		<definition name="questionnaires" extends="template">
 		<put-attribute name="pageTitle" value="Liste des questionnaires" />
 		<put-attribute name="navContent" value="/WEB-INF/views/header.jsp" />
-		<put-attribute name="content" value="/WEB-INF/views/questionnaires.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/admin/questionnaires.jsp" />
 	</definition>
 
 	<definition name="questionnaire" extends="template">
 		<put-attribute name="pageTitle" value="Questionnaire" />
 		<put-attribute name="navContent" value="/WEB-INF/views/header.jsp" />
-		<put-attribute name="content" value="/WEB-INF/views/questionnaire.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/admin/questionnaire.jsp" />
 	</definition>
 	
 	<definition name="question" extends="template">
 		<put-attribute name="pageTitle" value="Question" />
 		<put-attribute name="navContent" value="/WEB-INF/views/header.jsp" />
-		<put-attribute name="content" value="/WEB-INF/views/question.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/admin/question.jsp" />
 	</definition>
 	
 	<definition name="proposition" extends="template">
 		<put-attribute name="pageTitle" value="Proposition" />
 		<put-attribute name="navContent" value="/WEB-INF/views/header.jsp" />
-		<put-attribute name="content" value="/WEB-INF/views/proposition.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/admin/proposition.jsp" />
 	</definition>
 
 </tiles-definitions>

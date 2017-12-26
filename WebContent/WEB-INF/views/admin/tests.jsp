@@ -2,7 +2,7 @@
 
 <div class="container">
 	<div class="row">
-		<form class="col s12" action="test" method="post">
+		<form class="col s12" action="admin/test" method="post">
 			<div class="row">
 				<div class="input-field">
 					<input id="nom" name="nom" type="text" class="validate" /> 
@@ -17,7 +17,7 @@
 	<div class="row">
 		<ul class="collection">
 			<c:forEach items="${tests }" var="test">
-				<li class="collection-item"><span class="title">${test.nom }</span><a href="test/${test.id}" class="secondary-content"><i class="material-icons">more horiz</i></a></li>
+				<li class="collection-item"><span class="title">${test.nom }</span><a href="test/${test.id}" class="secondary-content"><i class="material-icons">edit</i></a></li>
 			</c:forEach>
 		</ul>
 	</div>

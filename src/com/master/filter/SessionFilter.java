@@ -12,6 +12,9 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.master.model.Administrateur;
+import com.master.model.Personne;
+
 @WebFilter("/*")
 public class SessionFilter implements Filter {
 	
@@ -19,15 +22,21 @@ public class SessionFilter implements Filter {
 		
 			HttpServletRequest request = (HttpServletRequest) req;
 			HttpServletResponse response = (HttpServletResponse) resp;
-			if((!request.getRequestURI().contains("/css")  && !request.getRequestURI().contains("/js") && !request.getRequestURI().contains("/login")) &&
-					request.getSession().getAttribute("user")== null){
-				response.sendRedirect(request.getContextPath() + "/login");
+			Personne user = (Personne) request.getSession().getAttribute("user");
+			
+			if (doesNotNeedAuth(request.getRequestURI()) || user != null) {
+				if (!request.getRequestURI().contains("/admin") || user instanceof Administrateur) {
+					chain.doFilter(req, resp);
+					return;
+				}
 			}
-			else {
-				chain.doFilter(req, resp);
-			}
+			response.sendRedirect(request.getContextPath() + "/login");
 		}
 		
+		private boolean doesNotNeedAuth(String URI) {
+			return true;
+		}
+	
 		@Override
 		public void init(FilterConfig filterConfig) throws ServletException {
 			// TODO Auto-generated method stub

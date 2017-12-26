@@ -35,4 +35,20 @@ public class CandidatDao extends AbstractIdDao<Candidat> implements ICandidatDao
 		}
 	}
 
+	@Override
+	public boolean cleDisponible(String cleATester) {
+		String queryString = "SELECT candidat FROM Candidat candidat LEFT JOIN FETCH candidat.tests WHERE candidat.id = :candidatId";
+
+		try {
+			getEntityManager().createQuery(queryString, Candidat.class)
+					.setParameter("candidatId", cleATester)
+					.getSingleResult();
+		} catch (NoResultException e) {
+			
+		}
+		return false;
+	}
+	
+	
+
 }

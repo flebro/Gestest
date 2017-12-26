@@ -14,7 +14,7 @@
 	<div class="row">
 		<h5>Associer un test</h5>
 
-		<form class="col s12" action="/Gestest/test/${candidat.id}/test"
+		<form class="col s12" action="/Gestest/admin/test/${candidat.id}/test"
 			method="post">
 
 			<select id="testAjoutId" name="testAjoutId">
@@ -35,10 +35,10 @@
 					<div>${test.nom}<a href="#!" class="secondary-content" title="Désassocier"
 							onclick="$.ajax({
 						    type: 'DELETE',
-						    url: 'http://localhost:8080/Gestest/candidat/${candidat.id}/test/${test.id}',
+						    url: 'http://localhost:8080/Gestest/admin/candidat/${candidat.id}/test/${test.id}',
 						    complete:
 					            function () {
-					                    window.location = 'http://localhost:8080/Gestest/candidat/${candidat.id}';                
+					                    window.location = 'http://localhost:8080/Gestest/admin/candidat/${candidat.id}';                
 					            }
 						});">
 							<i class="material-icons">close</i>
