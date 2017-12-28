@@ -28,7 +28,7 @@ public class LoginController {
 		Candidat candidat = candidatDao.findByCle(cle);
 		if (candidat != null) {
 			session.setAttribute("user", candidat);
-			return "tests";
+			return "redirect:/home";
 		} else {
 			return "redirect:/login";
 		}

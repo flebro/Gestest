@@ -28,7 +28,7 @@ public class TestDao extends AbstractIdDao<Test> implements ITestDao {
 
 	@Override
 	public List<Test> listFor(Candidat candidat) {
-		String queryString = "SELECT candidat.tests FROM Candidat candidat WHERE candidat = :candidat";
+		String queryString = "SELECT DISTINCT test FROM Test test LEFT JOIN FETCH test.questionnaires WHERE :candidat IN elements(test.candidats)";
 
 		return getEntityManager().createQuery(queryString, Test.class)
 				.setParameter("candidat", candidat)

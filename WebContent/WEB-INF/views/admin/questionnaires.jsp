@@ -3,7 +3,7 @@
 <div class="container">
 	<div class="row">
 		<h4 class="header">Nouveau questionnaire</h4>
-		<form class="col s12" action="admin/questionnaire" method="post">
+		<form class="col s12" action="questionnaire" method="post">
 			<div class="row">
 				<div class="input-field">
 					<input id="nom" name="nom" type="text" class="validate" /> <label

@@ -10,6 +10,9 @@ import com.master.model.Proposition;
 @Repository @Transactional
 public class PropositionDao extends AbstractIdDao<Proposition> implements IPropositionDao {
 	
+	/**
+	 * Pour détection par AOP
+	 */
 	@Override
 	public Proposition save(Proposition model) {
 		// TODO Auto-generated method stub

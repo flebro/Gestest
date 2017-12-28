@@ -9,7 +9,7 @@
 		<h5>Questions</h5>
 	</div>
 	<div class="row">
-		<a href="/Gestest/admin/questionnaire/${questionnaire.id}/question/"
+		<a href="${questionnaire.id}/question/"
 			class="waves-effect waves-light btn">Nouvelle question</a>
 
 		<ul class="collection">
@@ -19,18 +19,18 @@
 						<a href="#!" title="Supprimer" class="secondary-content"
 							onclick="$.ajax({
 								    type: 'DELETE',
-								    url: 'http://localhost:8080/Gestest/admin/questionnaire/${questionnaire.id}/question/${question.id}',
+								    url: '/Gestest/admin/questionnaire/${questionnaire.id}/question/${question.id}',
 								    complete:
 							            function () {
-							                    window.location = 'http://localhost:8080/Gestest/admin/questionnaire/${questionnaire.id}';                
+							                    window.location = '/Gestest/admin/questionnaire/${questionnaire.id}';                
 							            }
 								});">
 							<i class="material-icons">delete</i>
 						</a> <a class="secondary-content"
-							href="/Gestest/admin/questionnaire/${questionnaire.id}/question/${question.id}"
+							href="${questionnaire.id}/question/${question.id}"
 							title="Editer"> <i class="material-icons">edit</i>
 						</a> <a class="secondary-content"
-							href="/Gestest/admin/questionnaire/${questionnaire.id}/question/${question.id}/proposition"
+							href="${questionnaire.id}/question/${question.id}/proposition"
 							title="Ajouter une proposition"> <i class="material-icons">add</i>
 						</a>
 					</div>
@@ -47,15 +47,15 @@
 											href="#!" title="Supprimer" class="secondary-content"
 											onclick="$.ajax({
 											    type: 'DELETE',
-											    url: 'http://localhost:8080/Gestest/admin/questionnaire/${questionnaire.id}/question/${question.id}/proposition/${proposition.id }',
+											    url: '/Gestest/admin/questionnaire/${questionnaire.id}/question/${question.id}/proposition/${proposition.id }',
 											    complete:
 										            function () {
-										                    window.location = 'http://localhost:8080/Gestest/admin/questionnaire/${questionnaire.id}';                
+										                    window.location = '/Gestest/admin/questionnaire/${questionnaire.id}';                
 										            }
-											});">
+											});">	
 											<i class="material-icons">delete</i>
 										</a> <a class="secondary-content"
-											href="/Gestest/admin/questionnaire/${questionnaire.id}/question/${question.id}/proposition/${proposition.id }"
+											href="${questionnaire.id}/question/${question.id}/proposition/${proposition.id }"
 											title="Editer"> <i class="material-icons">edit</i>
 										</a>
 									</div>

@@ -3,6 +3,7 @@ package com.master.controller.admin;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,6 +15,7 @@ import com.master.dao.ITestDao;
 import com.master.model.Candidat;
 import com.master.model.Test;
 
+@Controller
 public class CandidatAdminController {
 
 	@Autowired
@@ -33,7 +35,7 @@ public class CandidatAdminController {
 		return "redirect:/admin/candidats";	
 	}
 	
-	@RequestMapping(value = "admin/test/{id}", method = RequestMethod.GET)
+	@RequestMapping(value = "admin/candidat/{id}", method = RequestMethod.GET)
 	public String get(@PathVariable(name = "id", required = true) Long id, Model model) {
 		Candidat candidat = candidatDao.getWithTests(id);
 		if (candidat != null) {
@@ -45,7 +47,7 @@ public class CandidatAdminController {
 			return "redirect:/admin/candidats/";
 		}
 	}
-
+	
 	@RequestMapping(value = "admin/candidat/{id}/test", method = RequestMethod.POST)
 	public String post(@PathVariable(name = "id", required = true) Long id, Long testAjoutId) {
 		Candidat candidat = candidatDao.getWithTests(id);

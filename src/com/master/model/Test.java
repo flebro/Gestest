@@ -49,4 +49,8 @@ public class Test {
 		this.questionnaires = questionnaires;
 	}
 	
+	@ManyToMany
+	@JoinTable(name="candidat_test", joinColumns=@JoinColumn(name="test_id"), inverseJoinColumns=@JoinColumn(name="candidat_id"))
+	private List<Candidat> candidats;
+	
 }

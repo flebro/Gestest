@@ -10,9 +10,18 @@ import com.master.model.Candidat;
 @Repository @Transactional
 public class CandidatDao extends AbstractIdDao<Candidat> implements ICandidatDao {
 
+	/**
+	 * Pour détection par AOP
+	 */
+	@Override
+	public Candidat save(Candidat model) {
+		// TODO Auto-generated method stub
+		return super.save(model);
+	}
+	
 	@Override
 	public Candidat findByCle(String cle) {
-		String queryString = "FROM Candidat WHERE cle = :cle";
+		String queryString = "SELECT candidat FROM Candidat candidat LEFT JOIN FETCH candidat.tests WHERE candidat.cle = :cle";
 		try {
 			return getEntityManager().createQuery(queryString, Candidat.class)
 					.setParameter("cle", cle)
@@ -34,21 +43,5 @@ public class CandidatDao extends AbstractIdDao<Candidat> implements ICandidatDao
 			return null;
 		}
 	}
-
-	@Override
-	public boolean cleDisponible(String cleATester) {
-		String queryString = "SELECT candidat FROM Candidat candidat LEFT JOIN FETCH candidat.tests WHERE candidat.id = :candidatId";
-
-		try {
-			getEntityManager().createQuery(queryString, Candidat.class)
-					.setParameter("candidatId", cleATester)
-					.getSingleResult();
-		} catch (NoResultException e) {
-			
-		}
-		return false;
-	}
-	
-	
 
 }

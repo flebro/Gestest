@@ -9,6 +9,18 @@
 		<put-attribute name="navContent" value="" />
 		<put-attribute name="content" value="" />
 	</definition>
+	
+	<definition name="candidatTests" extends="template">
+		<put-attribute name="pageTitle" value="Vos tests" />
+		<put-attribute name="navContent" value="/WEB-INF/views/header.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/candidat/tests.jsp" />
+	</definition>
+	
+	<definition name="candidatQuestionnaire" extends="template">
+		<put-attribute name="pageTitle" value="Questionnaire" />
+		<put-attribute name="navContent" value="/WEB-INF/views/header.jsp" />
+		<put-attribute name="content" value="/WEB-INF/views/candidat/questionnaire.jsp" />
+	</definition>
 
 	<!-- Configuration de la vue "login" -->
 	<definition name="login" extends="template">

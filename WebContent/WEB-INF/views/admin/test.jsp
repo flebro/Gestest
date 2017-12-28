@@ -14,7 +14,7 @@
 	<div class="row">
 		<h5>Associer un questionnaire</h5>
 
-		<form class="col s12" action="/Gestest/admin/test/${test.id}/questionnaire"
+		<form class="col s12" action="${test.id}/questionnaire"
 			method="post">
 
 			<select id="questionnaireAjoutId" name="questionnaireAjoutId">
@@ -36,10 +36,10 @@
 							class="secondary-content"
 							onclick="$.ajax({
 						    type: 'DELETE',
-						    url: 'http://localhost:8080/Gestest/admin/test/${test.id}/questionnaire/${questionnaire.id}',
+						    url: '/Gestest/admin/test/${test.id}/questionnaire/${questionnaire.id}',
 						    complete:
 					            function () {
-					                    window.location = 'http://localhost:8080/Gestest/admin/test/${test.id}';                
+					                    window.location = '/Gestest/admin/test/${test.id}';                
 					            }
 						});">
 							<i class="material-icons">close</i>

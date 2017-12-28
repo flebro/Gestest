@@ -1,5 +1,6 @@
 package com.master.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -34,6 +35,10 @@ public class Candidat extends Personne {
 
 	public void setTests(List<Test> tests) {
 		this.tests = tests;
+	}
+	
+	public Candidat() {
+		tests = new ArrayList<>();
 	}
 	
 }
