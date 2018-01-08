@@ -11,6 +11,19 @@ import com.master.model.Administrateur;
 public class AdministrateurDao extends AbstractIdDao<Administrateur> implements IAdministrateurDao {
 
 	@Override
+	public Administrateur findByLogin(String login) {
+		String queryRqt = "FROM Administrateur" +
+				" WHERE login = :login";
+		try {
+			return getEntityManager().createQuery(queryRqt, Administrateur.class)
+					.setParameter("login", login)
+					.getSingleResult();
+		} catch (NoResultException e) {
+			return null;
+		}
+	}
+	
+	@Override
 	public Administrateur findByLoginMotDePasse(String login, String motDePasse) {
 		String queryRqt = "FROM Administrateur" +
 				" WHERE login = :login" +

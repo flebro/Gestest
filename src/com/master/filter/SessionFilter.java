@@ -12,27 +12,21 @@ import javax.servlet.annotation.WebFilter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.master.model.Administrateur;
 import com.master.model.Candidat;
 import com.master.model.Personne;
 
-@WebFilter("/*")
+@WebFilter("/user*")
 public class SessionFilter implements Filter {
 
 	public void doFilter(ServletRequest req, ServletResponse resp, FilterChain chain)throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) req;
 		HttpServletResponse response = (HttpServletResponse) resp;
 		Personne user = (Personne) request.getSession().getAttribute("user");
-
-		if (doesNotNeedAuth(request.getRequestURI()) || user != null) {
-			if ((request.getRequestURI().contains("/admin") && !(user instanceof Administrateur)) ||
-					(request.getRequestURI().contains("/user") && !(user instanceof Candidat))) {
-				response.sendRedirect(request.getContextPath() + "/home");
-				return;
-			} 
+		
+		if (user != null && user instanceof Candidat) {
 			chain.doFilter(req, resp);
 		} else {
-			response.sendRedirect(request.getContextPath() + "/login");				
+			response.sendRedirect(request.getContextPath() + "/home");
 		}
 	}
 

@@ -25,7 +25,7 @@ public class Question {
 	@JoinColumn(name="questionnaire_id")
 	private Questionnaire questionnaire;
 	
-	@OneToMany(mappedBy="question", fetch=FetchType.LAZY)
+	@OneToMany(mappedBy="question", orphanRemoval=true, fetch=FetchType.LAZY)
 	private List<Proposition> propositions;
 
 	public Long getId() {

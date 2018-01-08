@@ -1,15 +1,21 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags"%>
 
 <ul id="nav-mobile" class="right hide-on-med-and-down">
+
+	<sec:authorize access="hasRole('ADMIN')">
+
+		<li><a href="/Gestest/logout" 
+			class="waves-effect waves-light btn">Déconnexion</a></li>
+		<li><a class='waves-effect waves-light dropdown-button btn'
+			href='#' data-activates='dropdownAdmin'>Administration</a></li>
+
+	</sec:authorize>
+
 	<c:choose>
 		<c:when test="${user != null }">
-			<c:if test="${user.admin}">
-				<li><a class='waves-effect waves-light dropdown-button btn'
-					href='#' data-activates='dropdownAdmin'>Administration</a></li>
-			</c:if>
-
 			<li><a href="/Gestest/logout"
-				class="waves-effect waves-light btn">Déconnexion</a></li>
+			class="waves-effect waves-light btn">Déconnexion</a></li>
 		</c:when>
 		<c:otherwise>
 			<li><a href="/Gestest/loginAdmin"

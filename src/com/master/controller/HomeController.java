@@ -12,13 +12,17 @@ import com.master.model.Personne;
 @Controller
 public class HomeController {
 
-	@RequestMapping(value = "home", method = RequestMethod.GET)
+	@RequestMapping(value = {"/", "home"}, method = RequestMethod.GET)
 	public String get(HttpServletRequest request) {
 		Personne user = (Personne) request.getSession().getAttribute("user");
-		if (user instanceof Candidat) {
-			return "redirect:/user/tests";
+		if (user == null) {
+			return "redirect:/login";
 		} else {
-			return "redirect:/admin/tests";
+			if (user instanceof Candidat) {
+				return "redirect:/user/tests";
+			} else {
+				return "redirect:/admin/tests";
+			}
 		}
 	}
 	
